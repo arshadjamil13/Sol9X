@@ -9,7 +9,7 @@ export default function AdminDashboard  () {
     const navigate = useNavigate()
     const {user,logout} = useContext(AuthContext)
     const [password, setPassword] = useState("");
-  const [students, setStudents] = useState([]);
+    const [students, setStudents] = useState([]);
 
   const [modalOpen, setModalOpen] = useState(false);
   const [editingStudent, setEditingStudent] = useState(null);
@@ -47,11 +47,6 @@ export default function AdminDashboard  () {
         enrollmentDate :new Date(enrollmentDate).toISOString(),
       });
 
-    //   setStudents((prev) =>
-    //     prev.map((s) =>
-    //       s._id === editingStudent._id ? data.student : s
-    //     )
-    //   );
       setStudents((prev) =>
         prev.map((s) => (s.user._id === editingStudent.userId ? data.student : s))
       );
@@ -67,7 +62,7 @@ export default function AdminDashboard  () {
         enrollmentDate :new Date(enrollmentDate).toISOString(),
       });
 
-      setStudents((prev) => [...prev, data.student]);
+      setStudents((prev) => [...prev, data.students]);
       alert("Student added successfully");
     }
 
@@ -91,7 +86,7 @@ export default function AdminDashboard  () {
 
   const handleLogout = () => {
     logout()
-    navigate("/signin")
+    navigate("/")
   }
 
   useEffect(()=>{
@@ -112,7 +107,7 @@ export default function AdminDashboard  () {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      {/* Header */}
+      
       <header className="bg-blue-600 text-white py-4 px-6 flex justify-between items-center shadow-md">
         <h1 className="text-2xl font-bold">Admin Dashboard</h1>
          <h1 className="text-2xl font-bold absolute left-1/2 transform -translate-x-1/2">
@@ -134,7 +129,7 @@ export default function AdminDashboard  () {
           </button>
         </div>
 
-        {/* Students Grid */}
+        
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {students.map(student => (
             <div key={student.user._id} className="bg-white rounded-lg shadow-md p-6 flex flex-col gap-2">
@@ -155,7 +150,7 @@ export default function AdminDashboard  () {
         </div>
       </main>
 
-      {/* Modal */}
+      
       <StudentFormModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}

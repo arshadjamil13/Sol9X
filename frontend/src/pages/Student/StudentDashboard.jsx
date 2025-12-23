@@ -31,9 +31,6 @@ export default function StudentDashboard  ()  {
   };
 
   const handleSubmit = async () => {
-    // setStudent({ name, email, course, enrollmentDate });
-    // alert("Profile updated! (static)");
-    // setModalOpen(false);
 
     const updated = await updateProfile({name,email,course,enrollmentDate})
     setStudent(updated.student)
@@ -43,7 +40,7 @@ export default function StudentDashboard  ()  {
 
   const handleLogout = () => {
     logout()
-    navigate("/signin")
+    navigate("/")
   }
 
   useEffect(()=>{
@@ -76,7 +73,7 @@ export default function StudentDashboard  ()  {
 
   return (
     <div className="min-h-screen bg-gray-100 relative">
-      {/* Navbar */}
+      
        <header className="bg-blue-600 text-white py-4 px-6 flex justify-between items-center shadow-md">
         <h1 className="text-2xl font-bold">Student Dashboard</h1>
          <h1 className="text-2xl font-bold absolute left-1/2 transform -translate-x-1/2">
@@ -98,7 +95,7 @@ export default function StudentDashboard  ()  {
           </button>
         </div>
 
-        {/* Dashboard Cards */}
+        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-white rounded-xl shadow-lg p-6">
             <h3 className="font-semibold text-xl mb-3">Course Details</h3>
@@ -113,7 +110,7 @@ export default function StudentDashboard  ()  {
         </div>
       </main>
 
-      {/* Modal */}
+      
       {modalOpen && (
         <div className="fixed inset-0 flex justify-center items-center z-50 bg-transparent">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg p-8 relative">
@@ -122,6 +119,7 @@ export default function StudentDashboard  ()  {
               onClose={() => setModalOpen(false)}
               onSubmit={handleSubmit}
               initialData={{ name, setName, email, setEmail, course, setCourse, enrollmentDate, setEnrollmentDate }}
+              isEdit={true} 
               title="Edit Profile"
             />
           </div>

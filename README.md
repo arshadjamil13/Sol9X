@@ -129,7 +129,7 @@ npm run dev
 
 Create `.env` inside `Frontend`:
 ```
-VITE_API_BASE_URL=http://localhost:5000/api
+VITE_API_BASE_URL= https://sol9x-ipaj.onrender.com/api
 ```
 
 

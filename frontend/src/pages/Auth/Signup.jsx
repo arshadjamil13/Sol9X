@@ -41,6 +41,13 @@ export default function  Signup (){
       setLoading(false)
     }
   };
+   if (loading) {
+    return <div className="text-center mt-20">Loading profile...</div>;
+  }
+
+  if (error) {
+    return <div className="text-center text-red-500 mt-20">{error}</div>;
+  }
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">

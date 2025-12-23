@@ -33,18 +33,14 @@ const {Student} = require("../models/student.model")
       enrollmentDate: enrollmentDate ? new Date(enrollmentDate) : new Date()
     });
 
+     const students = await Student.findById(student._id)
+      .populate("user", "name email role");
+
     return res.status(201).json({
       success: true,
       message: "Student created successfully",
-      student: {
-        user: {
-          id: newUser._id,
-          name: newUser.name,
-          email: newUser.email
-        },
-        course: student.course,
-        enrollmentDate: student.enrollmentDate
-      }
+      students
+        
     });
 
     }catch(error){
