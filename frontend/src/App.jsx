@@ -10,14 +10,14 @@ function App() {
 
   return (
     <>
-      <Router>
-        <Routes>
-          <Route path="/signin" element={<Signin />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/student" element={<StudentDashboard />} />
-          <Route path="/admin" element={<AdminDashboard />} />
-        </Routes>
-      </Router>
+<Router>
+  <Routes>
+    <Route path="/" element={<Signin />} />  {/* <-- set Signin as default */}
+    <Route path="/signup" element={<Signup />} />
+    <Route path="/student" element={<StudentDashboard />} />
+    <Route path="/admin" element={<AdminDashboard />} />
+  </Routes>
+</Router>
     </>
   )
 }
